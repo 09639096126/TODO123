@@ -1,0 +1,55 @@
+<div class="container m-5 p-2 rounded mx-auto bg-light shadow">
+  <div class="row m-1 p-4">
+    <div class="col">
+      <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
+        <i class="fa fa-check-circle bg-primary text-white rounded p-2"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-1 p-3">
+    <div class="col col-8 mx-auto">
+  
+      <div class="row bg-white rounded shadow-sm p-2 add-todo-wrapper align-items-center justify-content-center">
+        <div class="col">
+          <input class="form-control form-control-lg border-0 add-todo-input bg-transparent rounded"
+            [(ngModel)]="todo.name" type="text" placeholder="Username">
+        </div>
+        <div class="col">
+          <input class="form-control form-control-lg border-0 add-todo-input bg-transparent rounded"
+            [(ngModel)]="todo.password" type="text" placeholder="Password">
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-outline-success" (click)="addTodo()">{{actionLabel}}</button>
+          <button type="button" class="btn btn-outline-success" (click)="resetTodo()">Reset</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-1 p-3">
+    <div class="col col-8 mx-auto">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let todoItem of todos" (click)="selectTodo(todoItem)">
+          <!-- <span>{{ todoItem.id }}</span> -->
+         <table border="2">
+          <tr>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Delete</th>
+          </tr>
+          <tr>
+            <td><span>{{ todoItem.name }}</span></td> 
+            <td>
+            <span>{{ todoItem.password }}</span></td>
+            <td> <button *ngIf="todoItem.id !== undefined" class="btn btn-sm btn-danger float-right" (click)="deleteTodo(todoItem.id)">Delete</button></td>
+          </tr>
+         </table>
+         
+          <!-- <button *ngIf="todoItem.id" class="btn btn-outline-success" (click)="updateTodo(todoItem)">{{actionLabel}}</button> -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
